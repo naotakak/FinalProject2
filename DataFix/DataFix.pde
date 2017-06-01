@@ -2,8 +2,8 @@ class DataFix {
    MapFixer fixMap;
    
    void setup() {
-      fixMap = new MapFixer("/Maps/europeBase.png",  placeholder, placeholder);
-      fixMap.loadOldMap();   
+      fixMap = new MapFixer("/Maps/europeBase.png",  "/Maps/1792.jpg");
+      size(fixMap.getWidth, fixMap.getHeight);
    }
    
    void draw() {
