@@ -1,9 +1,8 @@
-class DataFix {
-   MapFixer fixMap;
+MapFixer fixMap;
    
    void setup() {
       fixMap = new MapFixer("/Maps/europeBase.png",  "/Maps/1792.jpg");
-      size(fixMap.getWidth, fixMap.getHeight);
+      fullScreen();
    }
    
    void draw() {
@@ -13,9 +12,8 @@ class DataFix {
       if (keyPressed && key == ' ') {
         fixMap.nextPoint();
       }
-      if (keyPressed && (key = "ENTER" || key == "RETURN")) {
+      if (keyPressed && (key == ENTER || key == RETURN)) {
         fixMap.saveMap();
       }
       fixMap.display();
    }
-}
