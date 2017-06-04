@@ -2,7 +2,7 @@ class MapFixer {
     PImage old;
     PImage toFix;
     int year;
-    Point[] points = new Point[6];
+    Point[] points = new Point[4];
     int point;
     int xCor;
     int yCor;
@@ -29,8 +29,9 @@ class MapFixer {
     
     void fix() {
        int i = point;
-       while (i < points.length) {
+       while (i < points.length - 1) {
          this.fixer(i);
+         i += 2;
        }
     }
     
@@ -40,18 +41,16 @@ class MapFixer {
     
     void fixer(int i) {
       if (i == 0) { //allow direct translation
-         translate(points[0].findX(points[1]), points[0].findY(points[1]));
+         toFix.translate(points[0].findX(points[1]), points[0].findY(points[1]));
       }
-      //find how much to scale
-      /*
-      double toScale;
-      if (points[i].findHeading(points[i + 1]) > 0 && points[i].findHeading(points[i + 1]) < 90 ||
-          points[i].findHeading(points[i + 1]) > 180 && points[i].findHeading(points[i + 1]) < 270) {
-            toScale = points[i].getX()
-      */
-      if (toScale != 0) {
-         toFix.ourScale(toScale, points[1]); //add ourScale to keep point in place
-         //add rotate
+      else {
+        //rotate first, then scale
+        double howMuchToRotate = points[0].findHeading(points[i + 1]) - points[0].findHeading(points[i]);
+        toFix.rotate(howMuchToRotate); //need to override rotate function
+        //points should now be collinear
+        //find how much to scale
+        double toScale = findRatio(points[0], points[i], points[i + 1]);
+        toFix.scale(toScale, points[0]); //add ourScale to keep point in place
       }
     }
     void nextPoint() {
