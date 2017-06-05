@@ -1,29 +1,26 @@
 class MapFixer {
-    PImage old;
-    PImage toFix;
-    int year;
+    Map old;
+    Map toFix;
+    int year, point, xCor, yCor;
     Point[] points = new Point[4];
-    int point;
-    int xCor;
-    int yCor;
-  
+
     MapFixer(String oldMap, String mapToFix) {
-       old = loadImage(oldMap);
-       toFix = loadImage(mapToFix);
-       xCor = old.width;
+       old = new Map(oldMap);
+       toFix = new Map(mapToFix);
+       xCor = old.map.width;
        yCor = 0;
     }
     
     int getWidth() {
-       return old.width + toFix.width;
+       return old.map.width + toFix.map.width;
     }
     
     int getHeight() {
-       if (old.height > toFix.height) {
-          return old.height;
+       if (old.map.height > toFix.map.height) {
+          return old.map.height;
        }
        else {
-          return toFix.height;
+          return toFix.map.height;
        }
     }
     
@@ -36,7 +33,8 @@ class MapFixer {
     }
     
     void saveMap() {
-      
+      String s = "../FinishedMaps/" + year + ".jpg";
+      save(s);
     }
     
     void fixer(int i) {
@@ -46,10 +44,10 @@ class MapFixer {
       else {
         //rotate first, then scale
         double howMuchToRotate = points[0].findHeading(points[i + 1]) - points[0].findHeading(points[i]);
-        toFix.rotate(howMuchToRotate); //need to override rotate function
+        toFix.rotate(howMuchToRotate, points[0]); //need to override rotate function
         //points should now be collinear
         //find how much to scale
-        double toScale = findRatio(points[0], points[i], points[i + 1]);
+        double toScale = points[0].findRatio(points[i], points[i + 1]);
         toFix.scale(toScale, points[0]); //add ourScale to keep point in place
       }
     }
@@ -62,7 +60,8 @@ class MapFixer {
     }
     
     void display() {
-        image(old, 0, 0);
-        image(toFix, xCor, yCor);
+        image(old.map, 0, 0, old.map.width/2, old.map.height/2);
+        image(toFix.map, xCor/2, yCor/2, toFix.map.width/2, toFix.map.height/2);
+        //need to add opacity
     }
 }

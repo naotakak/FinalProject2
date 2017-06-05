@@ -31,4 +31,13 @@ class Point {
   double getSlope(Point other) {
     return findY(other) / findX(other);
   }
+  
+  double dist(Point a) {
+    return sqrt(pow(a.getX() - this.getX(), 2) + pow(a.getY() - this.getY(), 2));
+  }
+  
+  double findRatio(Point a, Point aP) {
+    return this.dist(a) / this.dist(aP);
+  }
+  
 }
