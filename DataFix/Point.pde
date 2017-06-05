@@ -40,4 +40,10 @@ class Point {
     return this.dist(a) / this.dist(aP);
   }
   
+  String toString(){
+    return "X is " + x + " Y is " + y;
+    
+  }
+  
+  
 }

@@ -57,11 +57,17 @@ class MapFixer {
     
     void setPoint(int x, int y) {
        points[point] = new Point(x, y);
+       for(int i = 0; i < points.length; i ++){
+          println(points[i] + " element: " + i);
+       }
+       
     }
     
     void display() {
         image(old.map, 0, 0, old.map.width/2, old.map.height/2);
+        //tint(255,255);
         image(toFix.map, xCor/2, yCor/2, toFix.map.width/2, toFix.map.height/2);
+        //tint(255,255);
         //need to add opacity
     }
 }

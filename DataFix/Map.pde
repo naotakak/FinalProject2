@@ -15,6 +15,7 @@ class Map {
   
   void translate(int x, int y) {
     //move entire map
+    
   }
   
 }
