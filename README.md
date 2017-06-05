@@ -1,7 +1,7 @@
 # FinalProject2
 <h1>Europe Borders</h1>
-This project shows the change of Europe's borders over time. Through scaling, rotation, and translation, maps are adjusted in a way that they are uniform to each other which allows for fluid transitions. Each country will be labeled.
 <h4>Xavier Chen<br>Naotaka Kinoshita</h4>
+This project shows the change of Europe's borders over time. Through scaling, rotation, and translation, maps are adjusted in a way that they are uniform to each other which allows for fluid transitions. Each country will be labeled.
 <br><br>
 <h3>Features</h3>
 <ul>
