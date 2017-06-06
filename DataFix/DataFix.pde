@@ -31,6 +31,11 @@ MapFixer fixMap;
        println("true");
       }
     }
-  }
+    if (key == ENTER || key == RETURN){
+      fixMap.fix();
+    }
+    }
+    
+    
 
   

@@ -13,12 +13,14 @@ class Map {
     //rotate and keep point static
   }
   
-  void translate(int x, int y) {
-    //move entire map
+  void trans(int x, int y) {
+    //background(222);
+    translate(x,y);
+    //background(222);
     
   }
   
   void setOpacity(double percent) {
-    tint(255,255 * (int)(percent / 100)); //this doesn't work
+    tint(255,255 * (int)(percent / 100));   //this doesn't work
   }
 }

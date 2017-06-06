@@ -31,7 +31,11 @@ class MapFixer {
     
     void fix() {
       //allow direct translation
-      toFix.translate(points[0].findX(points[1]), points[0].findY(points[1]));
+      int x = points[0].findX(points[1]);
+      int y = points[0].findY(points[1]);
+      toFix.trans(x, y);
+      xCor -= x;
+      yCor -= y;
       //rotate first, then scale
       double howMuchToRotate = points[0].findHeading(points[2]) - points[0].findHeading(points[1]);
       toFix.rotate(howMuchToRotate, points[0]); //need to override rotate function
@@ -57,6 +61,7 @@ class MapFixer {
         image(old.map, 0, 0, old.map.width/2, old.map.height/2);
         //tint(255,255);
         image(toFix.map, xCor/2, yCor/2, toFix.map.width/2, toFix.map.height/2);
+        //tint(255,127);
         toFix.setOpacity(50.0);
         //need to add opacity
     }
