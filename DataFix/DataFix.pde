@@ -20,10 +20,11 @@ MapFixer fixMap;
    }
    
    void mousePressed() {
-  fixMap.setPoint(mouseX, mouseY);
-  ellipse(mouseX,mouseY,10,10); 
-}
-  void keyPressed(){
+     fixMap.setPoint(mouseX, mouseY);
+     ellipse(mouseX,mouseY,10,10); 
+   }
+   
+   void keyPressed(){
     if(key == CODED){
       if(keyCode == RIGHT){
        fixMap.nextPoint(); 

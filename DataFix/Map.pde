@@ -18,4 +18,7 @@ class Map {
     
   }
   
+  void setOpacity(double percent) {
+    tint(255,255 * (int)(percent / 100)); //this doesn't work
+  }
 }

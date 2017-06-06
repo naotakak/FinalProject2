@@ -24,33 +24,23 @@ class MapFixer {
        }
     }
     
-    void fix() {
-       int i = point;
-       while (i < points.length - 1) {
-         this.fixer(i);
-         i += 2;
-       }
-    }
-    
     void saveMap() {
       String s = "../FinishedMaps/" + year + ".jpg";
       save(s);
     }
     
-    void fixer(int i) {
-      if (i == 0) { //allow direct translation
-         toFix.translate(points[0].findX(points[1]), points[0].findY(points[1]));
-      }
-      else {
-        //rotate first, then scale
-        double howMuchToRotate = points[0].findHeading(points[i + 1]) - points[0].findHeading(points[i]);
-        toFix.rotate(howMuchToRotate, points[0]); //need to override rotate function
-        //points should now be collinear
-        //find how much to scale
-        double toScale = points[0].findRatio(points[i], points[i + 1]);
-        toFix.scale(toScale, points[0]); //add ourScale to keep point in place
-      }
+    void fix() {
+      //allow direct translation
+      toFix.translate(points[0].findX(points[1]), points[0].findY(points[1]));
+      //rotate first, then scale
+      double howMuchToRotate = points[0].findHeading(points[2]) - points[0].findHeading(points[1]);
+      toFix.rotate(howMuchToRotate, points[0]); //need to override rotate function
+      //points should now be collinear
+      //find how much to scale
+      double toScale = points[0].findRatio(points[1], points[2]);
+      toFix.scale(toScale, points[0]); //add ourScale to keep point in place
     }
+    
     void nextPoint() {
        point ++;
     }
@@ -67,7 +57,7 @@ class MapFixer {
         image(old.map, 0, 0, old.map.width/2, old.map.height/2);
         //tint(255,255);
         image(toFix.map, xCor/2, yCor/2, toFix.map.width/2, toFix.map.height/2);
-        //tint(255,255);
+        toFix.setOpacity(50.0);
         //need to add opacity
     }
 }
