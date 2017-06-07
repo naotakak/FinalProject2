@@ -2,6 +2,7 @@ class MapFixer {
     Map old;
     Map toFix;
     int year, point, xCor, yCor;
+    double toFixWidth, toFixHeight;
     Point[] points = new Point[4];
 
     MapFixer(String oldMap, String mapToFix) {
@@ -9,6 +10,8 @@ class MapFixer {
        toFix = new Map(mapToFix);
        xCor = old.map.width;
        yCor = 0;
+       toFixWidth = toFix.map.width/2;
+       toFixHeight = toFix.map.height/2;
     }
     
     int getWidth() {
@@ -30,19 +33,16 @@ class MapFixer {
     }
     
     void fix() {
+      double toScale = points[0].dist(points[2]) / points[1].dist(points[3]);
+      scal(toScale); //only scale toFix
+      display();
+      //double howMuchToRotate = points[0].findHeading(points[2]) - points[1].findHeading(points[3]);
+      //rotat(howMuchToRotate); //need to override rotate function
       //allow direct translation
       int x = points[0].findX(points[1]);
       int y = points[0].findY(points[1]);
-      toFix.trans(x, y);
-      xCor -= x;
-      yCor -= y;
-      //rotate first, then scale
-      double howMuchToRotate = points[0].findHeading(points[2]) - points[0].findHeading(points[1]);
-      toFix.rotate(howMuchToRotate, points[0]); //need to override rotate function
-      //points should now be collinear
-      //find how much to scale
-      double toScale = points[0].findRatio(points[1], points[2]);
-      toFix.scale(toScale, points[0]); //add ourScale to keep point in place
+      trans(x, y);
+      display();
     }
     
     void nextPoint() {
@@ -57,12 +57,21 @@ class MapFixer {
        
     }
     
+    void scal(double s) {
+      toFixWidth = toFixWidth * s;
+      toFixHeight = toFixHeight * s;
+    }
+    
+    void trans(int x, int y) {
+      xCor -= x;
+      yCor -= y;
+    }
+    
     void display() {
+        //background(222);
         image(old.map, 0, 0, old.map.width/2, old.map.height/2);
-        //tint(255,255);
-        image(toFix.map, xCor/2, yCor/2, toFix.map.width/2, toFix.map.height/2);
-        //tint(255,127);
-        toFix.setOpacity(50.0);
-        //need to add opacity
+        tint(255,127);
+        image(toFix.map, xCor/2, yCor/2, (int)toFixWidth, (int)toFixHeight);
+        tint(255,255);
     }
 }

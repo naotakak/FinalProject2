@@ -5,11 +5,11 @@ class Map {
     map = loadImage(image);
   }
   
-  void scale(double s, Point keep) {
+  void scal(double s) {
     //scale and keep point static
   }
   
-  void rotate(double d, Point keep) {
+  void rotat(double d) {
     //rotate and keep point static
   }
   
@@ -21,6 +21,7 @@ class Map {
   }
   
   void setOpacity(double percent) {
+    background(222);
     tint(255,255 * (int)(percent / 100));   //this doesn't work
   }
 }

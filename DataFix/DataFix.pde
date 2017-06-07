@@ -6,18 +6,17 @@ MapFixer fixMap;
       size(1000, 1000); //can change numbers without affecting anything
       surface.setResizable(true);
       surface.setSize(fixMap.getWidth()/2, fixMap.getHeight()/2);
+      fixMap.display();
       //need to resize image to fit window size
    }
-   
+   /*
    void draw() {
-     fixMap.display();
      /* if (keyPressed && (key == ENTER || key == RETURN)) {
         fixMap.saveMap();
         //indicate saved
       }*/
       
       //put fix() function here and get rid of display()
-   }
    
    void mousePressed() {
      fixMap.setPoint(mouseX, mouseY);
@@ -34,7 +33,7 @@ MapFixer fixMap;
     if (key == ENTER || key == RETURN){
       fixMap.fix();
     }
-    }
+  }
     
     
 
