@@ -9,12 +9,12 @@ MapFixer fixMap;
       fixMap.display();
       //need to resize image to fit window size
    }
-   /*
+   
    void draw() {
      /* if (keyPressed && (key == ENTER || key == RETURN)) {
-        fixMap.saveMap();
+        fixMap.saveMap();*/
         //indicate saved
-      }*/
+      }
       
       //put fix() function here and get rid of display()
    
@@ -29,8 +29,13 @@ MapFixer fixMap;
        fixMap.nextPoint(); 
        println("true");
       }
+      if(keyCode == SHIFT){
+        fixMap.display();
+        println("true");
+      }
     }
     if (key == ENTER || key == RETURN){
+      background(222);
       fixMap.fix();
     }
   }
