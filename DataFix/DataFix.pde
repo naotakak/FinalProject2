@@ -1,12 +1,12 @@
 MapFixer fixMap;
    
    void setup() {
-      fixMap = new MapFixer("../Maps/europeBase.png",  "../Maps/1792.jpg" );
+      fixMap = new MapFixer("../Maps/europeBase.png",  "../Maps/1810.png" );
       //add a way to choose the map you want to sae
       size(1000, 1000); //can change numbers without affecting anything
       surface.setResizable(true);
       surface.setSize(fixMap.getWidth()/2, fixMap.getHeight()/2);
-      fixMap.display();
+      //fixMap.display();
       //need to resize image to fit window size
    }
    

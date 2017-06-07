@@ -35,13 +35,15 @@ class MapFixer {
     void fix() {
       double toScale = points[0].dist(points[2]) / points[1].dist(points[3]);
       scal(toScale); //only scale toFix
+      points[1].scalePoint(toScale);
+      points[3].scalePoint(toScale);
       display();
       //double howMuchToRotate = points[0].findHeading(points[2]) - points[1].findHeading(points[3]);
       //rotat(howMuchToRotate); //need to override rotate function
       //allow direct translation
       int x = points[0].findX(points[1]);
       int y = points[0].findY(points[1]);
-      trans(x, y);
+      trans(-10 * x, y / 2);
       display();
     }
     
