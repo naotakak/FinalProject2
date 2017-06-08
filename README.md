@@ -10,6 +10,7 @@ This project shows the change of Europe's borders over time. Through scaling, ro
 <li> 6/2/17 - Worked on Point class. Also worked on DataFix. </li>
 <li> 6/4/17 - Worked on fixer method which fixes the maps by translation, rotation, and scaling </li>
 <li> 6/5/17 - Finished all methods for Point Class. Can select the Points now too </li>
+<li> 6/7/17 - Scaling works properly, but translating still needs some fixing</li>
 </ul>
 <h3>Features</h3>
 <ul>
@@ -17,12 +18,11 @@ This project shows the change of Europe's borders over time. Through scaling, ro
 </ul>
 <h3>Bugs</h3>
 <ul>
-<li>Scale, rotate, translate still need to be implemented</li>
-<li>fix() and fixer() in MapFixer need to be changed to not take input</li>
-<li>opacity for overlaying image needs to be added</li>
+<li>Rotate still needs to be implemented</li>
 <li>need to add ways to give user confirmation that an action happened</li>
 <li>need to add a way for users to select a map themselves</li>
-<li>add a dot or circle when a user selects a point</li>
 <li>save the picture that needs to be saved instead of the whole window</li>
+<li>allow point selection to be undone</li>
+<li>stop user from selecting too many points</li>
 </ul>
 
