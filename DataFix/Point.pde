@@ -12,8 +12,8 @@ class Point {
   }
 
   void scalePoint(double scale) {
-    x = x * (int)scale;
-    y = y * (int)scale;
+    x = x - x * (int)scale;
+    y = y - y * (int)scale;
   }
   
   int getY() {

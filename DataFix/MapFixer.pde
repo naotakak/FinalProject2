@@ -43,7 +43,7 @@ class MapFixer {
       //allow direct translation
       int x = points[0].findX(points[1]);
       int y = points[0].findY(points[1]);
-      trans(-10 * x, y / 2);
+      trans(2 * x, -1 * y);
       display();
     }
     
