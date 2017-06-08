@@ -8,7 +8,7 @@ class MapFixer {
     MapFixer(String oldMap, String mapToFix) {
        old = new Map(oldMap);
        toFix = new Map(mapToFix);
-       xCor = old.map.width;
+       xCor = old.map.width/2;
        yCor = 0;
        toFixWidth = toFix.map.width/2;
        toFixHeight = toFix.map.height/2;
@@ -28,22 +28,44 @@ class MapFixer {
     }
     
     void saveMap() {
+      surface.setSize(old.map.width/2, old.map.height/2);
+      background(222);
+      image(toFix.map, xCor, yCor, (int)toFixWidth, (int)toFixHeight);
       String s = "../FinishedMaps/" + year + ".jpg";
       save(s);
     }
     
     void fix() {
+      /*
+      Point a = new Point(67,399);
+      Point aP = new Point(650,562);
+      Point b = new Point(279, 205);
+      Point bP = new Point(1066,208);
+      points[0] = a;
+      points[1] = aP;
+      points[2] = b;
+      points[3] = bP;
+      */
+      println("xCor is: " + xCor + " yCor is: " + yCor);
       double toScale = points[0].dist(points[2]) / points[1].dist(points[3]);
       scal(toScale); //only scale toFix
+      println("preSize1 " + points[1]);
+      println("preSize2 " + points[3]);
       points[1].scalePoint(toScale);
       points[3].scalePoint(toScale);
+      println("afSize1 " + points[1]);
+      println("afSize3 " + points[3]);
       display();
       //double howMuchToRotate = points[0].findHeading(points[2]) - points[1].findHeading(points[3]);
       //rotat(howMuchToRotate); //need to override rotate function
       //allow direct translation
-      int x = points[0].findX(points[1]);
-      int y = points[0].findY(points[1]);
-      trans(2 * x, -1 * y);
+      double x = points[1].getX();
+      println("x" + x);
+      double y = points[1].getY();
+      println(y);
+      println(toScale);
+      trans(-1 * x, y);
+      println("AFTER TRANSLATION: xCor is: " + xCor + " yCor is: " + yCor);
       display();
     }
     
@@ -55,8 +77,7 @@ class MapFixer {
        points[point] = new Point(x, y);
        for(int i = 0; i < points.length; i ++){
           println(points[i] + " element: " + i);
-       }
-       
+       }   
     }
     
     void scal(double s) {
@@ -64,16 +85,18 @@ class MapFixer {
       toFixHeight = toFixHeight * s;
     }
     
-    void trans(int x, int y) {
-      xCor -= x;
-      yCor -= y;
+    void trans(double x, double y) {
+      xCor = 0;
+      yCor = 0;
+      xCor += points[1].getX() - points[0].getX() - 505;// + x - 505;
+      yCor += points[0].getY() - y;// - y;
     }
     
     void display() {
         //background(222);
         image(old.map, 0, 0, old.map.width/2, old.map.height/2);
         tint(255,127);
-        image(toFix.map, xCor/2, yCor/2, (int)toFixWidth, (int)toFixHeight);
+        image(toFix.map, xCor, yCor, (int)toFixWidth, (int)toFixHeight);
         tint(255,255);
     }
 }
