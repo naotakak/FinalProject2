@@ -12,7 +12,7 @@ class Point {
   }
 
   void scalePoint(double scale) {
-    x = 505 + (x - 505) * scale;
+    x = 505 + ((x - 505) * scale);
     y = y * scale;
   }
   

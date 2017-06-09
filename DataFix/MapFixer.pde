@@ -1,6 +1,5 @@
 class MapFixer {
-    Map old;
-    Map toFix;
+    Map old, toFix;
     int year, point, xCor, yCor;
     double toFixWidth, toFixHeight;
     boolean filter = false;
@@ -68,7 +67,7 @@ class MapFixer {
       points[3].scalePoint(toScale);
       println("afSize1 " + points[1]);
       println("afSize3 " + points[3]);
-      display();
+      //display();
       //double howMuchToRotate = points[0].findHeading(points[2]) - points[1].findHeading(points[3]);
       //rotat(howMuchToRotate); //need to override rotate function
       //allow direct translation
@@ -103,18 +102,19 @@ class MapFixer {
     void trans(double x, double y) {
       xCor = 0;
       yCor = 0;
-      xCor += points[1].getX() - points[0].getX() - 505;// + x - 505;
+      xCor += points[0].getX() - x - 505;// + x - 505;
       yCor += points[0].getY() - y;// - y;
     }
     
     void display() {
-        //background(222);
         image(old.map, 0, 0, old.map.width/2, old.map.height/2);
         tint(255,127);
         image(toFix.map, xCor, yCor, (int)toFixWidth, (int)toFixHeight);
+        /*
         if (filter) {
           filter(GRAY);
         }
+        */
         tint(255,255);
     }
 }

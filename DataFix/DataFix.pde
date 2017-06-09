@@ -3,30 +3,32 @@ String inputFile = "";
 boolean typeable = false;
 
    void setup() {
-      //fixMap = new MapFixer("../Maps/europeBase.png",  "../Maps/1815.png" );
       size(1000, 1000); 
       surface.setResizable(true);
       typeable = true;
       println(typeable);
-      //surface.setSize(fixMap.getWidth()/2, fixMap.getHeight()/2);
    }
    
    void draw() {
      if (typeable) {
        background(222);
        textSize(32);
-       text("Europe Borders\nXavier Chen & Naotaka Kinoshita\nInput filename: " + inputFile, 50, 75);
+       text("Europe Borders\nXavier Chen & Naotaka Kinoshita\nInput filename: " + inputFile
+             + "\nCommands - \nENTER: select map\nSHIFT: load maps\nMOUSE CLICK: select points\n"
+             + "RIGHT ARROW: next point\nENTER:fix map\ns: save map", 50, 75);
        fill(0,102,153);
      }
    }
    
    void mousePressed() {
-     fixMap.setPoint(mouseX, mouseY);
-     ellipse(mouseX,mouseY,10,10); 
+     if (!typeable) {
+       fixMap.setPoint(mouseX, mouseY);
+       ellipse(mouseX,mouseY,10,10); 
+     }
    }
    
    void keyPressed(){
-    if (typeable == true) {
+    if (typeable) {
       println("TYPE");
       if (key == BACKSPACE) {
         if (inputFile.length() > 0) {
@@ -46,24 +48,24 @@ boolean typeable = false;
       }
     }
     else {
-    if(key == CODED){
-      if(keyCode == RIGHT){
-       fixMap.nextPoint(); 
-       println("true");
+      if(key == CODED){
+        if(keyCode == RIGHT){
+         fixMap.nextPoint(); 
+         println("true");
+        }
+        if(keyCode == SHIFT){
+          fixMap.display();
+          println("true");
+        }
       }
-      if(keyCode == SHIFT){
-        fixMap.display();
-        println("true");
+      if (key == ENTER || key == RETURN){
+        background(222);
+        fixMap.fix();
       }
-    }
-    if (key == ENTER || key == RETURN){
-      background(222);
-      fixMap.fix();
-    }
-    if (key == 's' || key == 'S') {
-      fixMap.saveMap();
-      text("saved", 0, 0);
-    }
+      if (key == 's' || key == 'S') {
+        fixMap.saveMap();
+        text("saved", 0, 0);
+      }
     }
   }
     
