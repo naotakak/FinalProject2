@@ -1,6 +1,7 @@
 //File[]years;
 String inputYear = "";
-PImage map;
+Map map;
+boolean inputReady = false;
 
 void setup() {
   size(505,505);
@@ -8,7 +9,10 @@ void setup() {
 }
 
 void draw() {
-  
+  if (inputReady) {
+    map = new Map(inputYear);
+    //image(map.map, 0 ,0);
+  }
 }
 
 void keyPressed() {
@@ -23,8 +27,7 @@ void keyPressed() {
     println(inputYear);
   }
   if (key == ENTER || key == RETURN) {
-    map = loadImage("../FinishedMaps/" + inputYear + ".jpg");
-    image(map, 0 , 0);
+    inputReady = true;
   }
 }
   
