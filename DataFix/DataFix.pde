@@ -1,7 +1,7 @@
 MapFixer fixMap;
    
    void setup() {
-      fixMap = new MapFixer("../Maps/europeBase.png",  "../Maps/europeBase.png" );
+      fixMap = new MapFixer("../Maps/europeBase.png",  "../Maps/1800.png" );
       //add a way to choose the map you want to sae
       size(1000, 1000); //can change numbers without affecting anything
       surface.setResizable(true);
