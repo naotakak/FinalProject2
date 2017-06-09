@@ -3,6 +3,7 @@ class MapFixer {
     Map toFix;
     int year, point, xCor, yCor;
     double toFixWidth, toFixHeight;
+    boolean filter = false;
     Point[] points = new Point[4];
 
     MapFixer(String oldMap, String mapToFix) {
@@ -10,8 +11,22 @@ class MapFixer {
        toFix = new Map(mapToFix);
        xCor = old.map.width/2;
        yCor = 0;
-       toFixWidth = toFix.map.width/2;
-       toFixHeight = toFix.map.height/2;
+       setDim();
+       setYear(mapToFix);
+       println("YEAR " + year);
+    }
+    
+    void setDim() {
+      toFixWidth = toFix.map.width / 2;
+      toFixHeight = toFix.map.height / 2;
+    }
+    
+    void setYear(String filename) {
+      String y = "";
+      for (int i = 8; i < 12; i ++) {
+        y += filename.charAt(i);
+      }
+      year = Integer.parseInt(y);
     }
     
     int getWidth() {
@@ -66,6 +81,7 @@ class MapFixer {
       println(toScale);
       trans(-1 * x, y);
       println("AFTER TRANSLATION: xCor is: " + xCor + " yCor is: " + yCor);
+      filter = true;
       display();
     }
     
@@ -97,6 +113,9 @@ class MapFixer {
         image(old.map, 0, 0, old.map.width/2, old.map.height/2);
         tint(255,127);
         image(toFix.map, xCor, yCor, (int)toFixWidth, (int)toFixHeight);
+        if (filter) {
+          filter(GRAY);
+        }
         tint(255,255);
     }
 }
