@@ -66,10 +66,19 @@ PrintWriter mapNum;
       if (key == 's' || key == 'S') {
         fixMap.saveMap();
         text("saved", 0, 0);
-        mapNum = createWriter("../numOfMaps.txt");
+        mapNum = createWriter("../mapYears.txt");
         mapNum.println(fixMap.year);
         mapNum.flush();
         mapNum.close();
+        /*
+        mapNum = createWriter("../numOfMaps.txt");
+        println(loadStrings("../numOfMaps.txt")[0]);
+        int maps = int(loadStrings("../numOfMaps.txt1810")[0]) + 1;
+        println(maps);
+        mapNum.println(maps);
+        mapNum.flush();
+        mapNum.close();
+        */
       }
     }
   }
