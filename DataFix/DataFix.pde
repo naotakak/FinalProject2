@@ -1,6 +1,7 @@
 MapFixer fixMap;
 String inputFile = "";
 boolean typeable = false;
+PrintWriter mapNum;
 
    void setup() {
       size(1000, 1000); 
@@ -65,6 +66,10 @@ boolean typeable = false;
       if (key == 's' || key == 'S') {
         fixMap.saveMap();
         text("saved", 0, 0);
+        mapNum = createWriter("../numOfMaps.txt");
+        mapNum.println(fixMap.year);
+        mapNum.flush();
+        mapNum.close();
       }
     }
   }
