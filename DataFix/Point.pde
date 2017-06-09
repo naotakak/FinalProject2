@@ -1,36 +1,36 @@
 class Point {
-  int x;
-  int y;
+  double x;
+  double y;
 
-  Point(int r, int c) {
+  Point(double r, double c) {
     x = r;
     y = c;
   }
 
-  int getX() {
+  double getX() {
     return x;
   }
 
   void scalePoint(double scale) {
-    x = x - x * (int)scale;
-    y = y - y * (int)scale;
+    x = 505 + (x - 505) * scale;
+    y = y - y * scale;
   }
   
-  int getY() {
+  double getY() {
     return y;
   }
 
-  int findX(Point other) {
+  double findX(Point other) {
     return other.getX() - getX();
   }
 
-  int findY(Point other) {
+  double findY(Point other) {
     return other.getY() - getY();
   }
 
-  float findHeading(Point other) {
-    float ret = atan2(findY(other), findX(other));
-    return degrees(ret);  
+  double findHeading(Point other) {
+    float ret = atan2((float)findY(other), (float)findX(other));
+    return (double)degrees(ret);  
   }
 
   double getSlope(Point other) {
@@ -38,7 +38,7 @@ class Point {
   }
   
   double dist(Point a) {
-    return sqrt(pow(a.getX() - this.getX(), 2) + pow(a.getY() - this.getY(), 2));
+    return sqrt(pow((float)(a.getX() - this.getX()), 2) + pow((float)(a.getY() - this.getY()), 2));
   }
   
   double findRatio(Point a, Point aP) {
