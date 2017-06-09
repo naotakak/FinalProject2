@@ -4,8 +4,7 @@ boolean typeable = false;
 
    void setup() {
       //fixMap = new MapFixer("../Maps/europeBase.png",  "../Maps/1815.png" );
-      //add a way to choose the map you want to sae
-      size(1000, 1000); //can change numbers without affecting anything
+      size(1000, 1000); 
       surface.setResizable(true);
       typeable = true;
       println(typeable);

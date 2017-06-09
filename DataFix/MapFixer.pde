@@ -51,16 +51,14 @@ class MapFixer {
     }
     
     void fix() {
-      /*
-      Point a = new Point(67,399);
+      /*Point a = new Point(67,399);
       Point aP = new Point(650,562);
       Point b = new Point(279, 205);
       Point bP = new Point(1066,208);
       points[0] = a;
       points[1] = aP;
       points[2] = b;
-      points[3] = bP;
-      */
+      points[3] = bP;*/
       println("xCor is: " + xCor + " yCor is: " + yCor);
       double toScale = points[0].dist(points[2]) / points[1].dist(points[3]);
       scal(toScale); //only scale toFix
@@ -79,7 +77,8 @@ class MapFixer {
       double y = points[1].getY();
       println(y);
       println(toScale);
-      trans(-1 * x, y);
+      trans(-1 * x, yCor + y);
+      println(y);
       println("AFTER TRANSLATION: xCor is: " + xCor + " yCor is: " + yCor);
       filter = true;
       display();
