@@ -12,7 +12,7 @@ This project shows the change of Europe's borders over time. Through scaling, ro
 The project consists of two phases. Phase 1 is for taking different maps that may have different sizes/orientations and fitting them to a standard, so that phase 2 can run smoothly. Phase 2 is a viewer for the maps, which will be accomplished by using a slider from ControlP5.
 </p>
 
-<h5> Using Phase 1 <h5>
+<h5> Using Phase 1 </h5>
 <p>
 In order to 'fix' the maps, the user must select two pairs of corresponding points so that the maps can be properly fixed. The points should be in geographically corresponding locations, for example, one of the points on the left hand map (the base map) could be on Gibraltar, and the corresponding point on the right hand map (the map to be fixed) would also be on Gibraltar. 
 </p>
