@@ -1,7 +1,6 @@
 MapFixer fixMap;
 String inputFile = "";
 boolean typeable = false;
-boolean read = true;
 
    void setup() {
       size(1000, 1000); 

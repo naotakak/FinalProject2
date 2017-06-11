@@ -46,9 +46,7 @@ class Point {
   }
   
   String toString(){
-    return "X is " + x + " Y is " + y;
-    
+    return "X is " + x + " Y is " + y;  
   }
-  
   
 }

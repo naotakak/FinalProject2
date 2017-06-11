@@ -3,7 +3,6 @@ class MapFixer {
     int year, point, xCor, yCor;
     double scales;
     double toFixWidth, toFixHeight;
-    boolean filter = false;
     Point[] points = new Point[4];
     BufferedReader getText;
     String text = "";
@@ -64,7 +63,7 @@ class MapFixer {
       String[]text = loadStrings("../numOfMaps.txt");
       mapNum = createWriter("../numOfMaps.txt");
       int maps = Integer.parseInt(text[0]) + 1;
-      println(maps);
+      mapNum.println(maps);
       mapNum.flush();
       mapNum.close();
     }
@@ -91,7 +90,6 @@ class MapFixer {
       trans(x , yCor + y);
       println(y);
       println("AFTER TRANSLATION: xCor is: " + xCor + " yCor is: " + yCor);
-      filter = true;
       display();
     }
     
@@ -112,11 +110,9 @@ class MapFixer {
     }
     
     void trans(double x, double y) {
-      //xCor = 0;
       yCor = 0;
       xCor -= 505 + (x - points[0].getX() - 505);
       println("diff is " + (points[0].getX() - points[1].getX()));
-      //xCor += points[1].getX() - points[0].getX() - 505;// - ((points[1].getX() - 505) * scales) ;// + x - 505;
       yCor += points[0].getY() - y;// - y;
     }
     
@@ -124,11 +120,6 @@ class MapFixer {
         image(old.map, 0, 0, old.map.width/2, old.map.height/2);
         tint(255,127);
         image(toFix.map, xCor, yCor, (int)toFixWidth, (int)toFixHeight);
-        /*
-        if (filter) {
-          filter(GRAY);
-        }
-        */
         tint(255,255);
     }
 }
