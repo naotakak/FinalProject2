@@ -1,6 +1,7 @@
 class MapFixer {
     Map old, toFix;
     int year, point, xCor, yCor;
+    double scales;
     double toFixWidth, toFixHeight;
     boolean filter = false;
     Point[] points = new Point[4];
@@ -50,16 +51,17 @@ class MapFixer {
     }
     
     void fix() {
-      Point a = new Point(67,399);
+      /*Point a = new Point(67,399);
       Point aP = new Point(650,562);
       Point b = new Point(279, 205);
       Point bP = new Point(1066,208);
       points[0] = a;
       points[1] = aP;
       points[2] = b;
-      points[3] = bP;
+      points[3] = bP;*/
       println("xCor is: " + xCor + " yCor is: " + yCor);
       double toScale = points[0].dist(points[2]) / points[1].dist(points[3]);
+      scales = toScale;
       scal(toScale); //only scale toFix
       println("preSize1 " + points[1]);
       println("preSize2 " + points[3]);
@@ -67,7 +69,7 @@ class MapFixer {
       points[3].scalePoint(toScale);
       println("afSize1 " + points[1]);
       println("afSize3 " + points[3]);
-      display();
+      //display();
       //double howMuchToRotate = points[0].findHeading(points[2]) - points[1].findHeading(points[3]);
       //rotat(howMuchToRotate); //need to override rotate function
       //allow direct translation
@@ -100,9 +102,11 @@ class MapFixer {
     }
     
     void trans(double x, double y) {
-      xCor = 0;
+      //xCor = 0;
       yCor = 0;
-      xCor += points[1].getX() - points[0].getX() - 505;// + x - 505;
+      xCor -= 505 + (x - points[0].getX() - 505);
+      println("diff is " + (points[0].getX() - points[1].getX()));
+      //xCor += points[1].getX() - points[0].getX() - 505;// - ((points[1].getX() - 505) * scales) ;// + x - 505;
       yCor += points[0].getY() - y;// - y;
     }
     
