@@ -5,6 +5,9 @@ class MapFixer {
     double toFixWidth, toFixHeight;
     boolean filter = false;
     Point[] points = new Point[4];
+    BufferedReader getText;
+    String text = "";
+    PrintWriter mapNum;
 
     MapFixer(String oldMap, String mapToFix) {
        old = new Map(oldMap);
@@ -48,17 +51,25 @@ class MapFixer {
       image(toFix.map, xCor, yCor, (int)toFixWidth, (int)toFixHeight);
       String s = "../FinishedMaps/" + year + ".jpg";
       save(s);
+      String[]lines = loadStrings("../mapYears.txt");
+      for (int i = 0; i < lines.length; i ++) {
+        text += lines[i];
+        text += "\n";
+      }
+      println(text);
+      mapNum = createWriter("../mapYears.txt");
+      mapNum.println(text + fixMap.year);
+      mapNum.flush();
+      mapNum.close();
+      String[]text = loadStrings("../numOfMaps.txt");
+      mapNum = createWriter("../numOfMaps.txt");
+      int maps = Integer.parseInt(text[0]) + 1;
+      println(maps);
+      mapNum.flush();
+      mapNum.close();
     }
     
     void fix() {
-      /*Point a = new Point(67,399);
-      Point aP = new Point(650,562);
-      Point b = new Point(279, 205);
-      Point bP = new Point(1066,208);
-      points[0] = a;
-      points[1] = aP;
-      points[2] = b;
-      points[3] = bP;*/
       println("xCor is: " + xCor + " yCor is: " + yCor);
       double toScale = points[0].dist(points[2]) / points[1].dist(points[3]);
       scales = toScale;
@@ -72,7 +83,6 @@ class MapFixer {
       //display();
       //double howMuchToRotate = points[0].findHeading(points[2]) - points[1].findHeading(points[3]);
       //rotat(howMuchToRotate); //need to override rotate function
-      //allow direct translation
       double x = points[1].getX();
       println("x" + x);
       double y = points[1].getY();
