@@ -30,7 +30,7 @@ class Point {
 
   double findHeading(Point other) {
     float ret = atan2((float)findY(other), (float)findX(other));
-    return (double)degrees(ret);  
+    return /*(double)degrees*/ret;  
   }
 
   double getSlope(Point other) {

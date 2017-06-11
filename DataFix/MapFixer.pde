@@ -3,6 +3,7 @@ class MapFixer {
     int year, point, xCor, yCor;
     double scales;
     double toFixWidth, toFixHeight;
+    double headDiff;
     Point[] points = new Point[4];
     BufferedReader getText;
     String text = "";
@@ -68,7 +69,23 @@ class MapFixer {
       mapNum.close();
     }
     
+    void headingDiff() {
+      double baseHeading = points[0].findHeading(points[2]);
+      double fixHeading = points[1].findHeading(points[3]);
+      headDiff = baseHeading - fixHeading;
+    }
+    
     void fix() {
+      Point a = new Point(66,398);
+      Point aP = new Point(598,665);
+      Point b = new Point(302,401);
+      Point bP = new Point(1207,607);
+      points[0] = a;
+      points[1] = aP;
+      points[2] = b;
+      points[3] = bP;
+      point = 4;
+      headingDiff();
       println("xCor is: " + xCor + " yCor is: " + yCor);
       double toScale = points[0].dist(points[2]) / points[1].dist(points[3]);
       scales = toScale;
@@ -95,15 +112,12 @@ class MapFixer {
     
     void nextPoint() {
        point ++;
+       
     }
     
     void setPoint(int x, int y) {
-       points[point] = new Point(x, y);
-       for(int i = 0; i < points.length; i ++){
-          println(points[i] + " element: " + i);
-       }   
-    }
-    
+   asdas
+    sd
     void scal(double s) {
       toFixWidth = toFixWidth * s;
       toFixHeight = toFixHeight * s;
@@ -119,7 +133,15 @@ class MapFixer {
     void display() {
         image(old.map, 0, 0, old.map.width/2, old.map.height/2);
         tint(255,127);
+        if (point >= 3){
+          println(headDiff);
+          rotate((float)headDiff);
+          image(toFix.map, xCor, yCor, (int)toFixWidth, (int)toFixHeight);
+          tint(255,255);
+        }
+        else{
         image(toFix.map, xCor, yCor, (int)toFixWidth, (int)toFixHeight);
         tint(255,255);
+        }
     }
 }
