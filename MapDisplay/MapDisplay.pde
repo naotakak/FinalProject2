@@ -16,7 +16,6 @@ void setup() {
   cp5.addSlider("yearSlider").setPosition(50, 25).setRange(
     Float.parseFloat(yearList[0]), 
     Float.parseFloat(yearList[yearList.length - 1])).setSize(150,25);
-  //years = listFiles("/FinishedMaps/");
 }
 
 void draw() {
