@@ -42,10 +42,10 @@ To use Phase 2, simply run the program and use the slider at the top left to vie
 
 <h3>Bugs</h3>
   <ul>
+    <li>Entering text can sometimes be buggy - this seems to be a fault of Processing</li>
     <li>Rotate still needs to be implemented</li>
-    <li>need to add ways to give user confirmation that an action happened</li>
     <li>stop user from selecting too many points</li>
   </ul>
 
 <h3>UML Diagram</h3>
-<img src="../Images/UML.png">
+<img src="https://github.com/naotakak/FinalProject2/blob/master/Images/UML.PNG">
