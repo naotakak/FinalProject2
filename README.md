@@ -47,3 +47,5 @@ To use Phase 2, simply run the program and use the slider at the top left to vie
     <li>stop user from selecting too many points</li>
   </ul>
 
+<h3>UML Diagram</h3>
+<img src="../Images/UML.png">
