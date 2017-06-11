@@ -11,9 +11,21 @@ class Point {
     return x;
   }
 
+  void setX(double xx){
+   x = xx; 
+  }
+  
+  void setY(double yy){
+   y = yy; 
+  }
   void scalePoint(double scale) {
     x = 505 + ((x - 505) * scale);
     y = y * scale;
+  }
+  
+  void pointAfterRotation(float angle){
+   y = y*cos(angle) - x * sin(angle);
+   x = y*sin(angle) + x * cos(angle);
   }
   
   double getY() {
