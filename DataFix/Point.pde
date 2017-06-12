@@ -11,9 +11,21 @@ class Point {
     return x;
   }
 
+  void setX(double xx){
+   x = xx; 
+  }
+  
+  void setY(double yy){
+   y = yy; 
+  }
   void scalePoint(double scale) {
     x = 505 + ((x - 505) * scale);
     y = y * scale;
+  }
+  
+  void pointAfterRotation(float angle){
+   y = y*cos(angle) - x * sin(angle);
+   x = y*sin(angle) + x * cos(angle);
   }
   
   double getY() {
@@ -30,7 +42,7 @@ class Point {
 
   double findHeading(Point other) {
     float ret = atan2((float)findY(other), (float)findX(other));
-    return (double)degrees(ret);  
+    return /*(double)degrees*/ret;  
   }
 
   double getSlope(Point other) {
