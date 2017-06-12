@@ -14,7 +14,7 @@ The project consists of two phases. Phase 1 is for taking different maps that ma
 
 <h5> Using Phase 1 </h5>
 <p>
-In order to 'fix' the maps, the user must select two pairs of corresponding points so that the maps can be properly fixed. The points should be in geographically corresponding locations, for example, one of the points on the left hand map (the base map) could be on Gibraltar, and the corresponding point on the right hand map (the map to be fixed) would also be on Gibraltar. 
+In order to 'fix' the maps, the user must select two pairs of corresponding points so that the maps can be properly fixed. The points should be in geographically corresponding locations, for example, one of the points on the left hand map (the base map) could be on Gibraltar, and the corresponding point on the right hand map (the map to be fixed) would also be on Gibraltar.
 </p>
 
 <p>
@@ -36,15 +36,15 @@ To use Phase 2, simply run the program and use the slider at the top left to vie
     <li> 6/7/17 - Scaling works properly, but translating still needs some fixing</li>
     <li> 6/8/17 - Started work on Phase 2, implemented a rough method of viewing maps by entering year manually</li>
     <li> 6/10/17 - Translating is completely done</li>
-    <li> 6/11/17 - Finished Phase 2 by implementing slider from controlp5</li>
+    <li> 6/11/17 - Finished Phase 2 by implementing slider from controlp5. Also started and finished rotation.</li>
   </ul>
 
 
 <h3>Bugs</h3>
   <ul>
     <li>Entering text can sometimes be buggy - this seems to be a fault of Processing</li>
-    <li>Rotate still needs to be implemented</li>
-    <li>stop user from selecting too many points</li>
+    <li>Stop user from selecting too many points</li>
+    <li>A small percent of margin error based on human errors and the maps themselves </li>
   </ul>
 
 <h3>UML Diagram</h3>
