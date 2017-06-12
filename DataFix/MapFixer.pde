@@ -48,6 +48,7 @@ class MapFixer {
     void saveMap() {
       surface.setSize(old.map.width/2, old.map.height/2);
       background(222);
+      rotate((float)headDiff);
       image(toFix.map, xCor, yCor, (int)toFixWidth, (int)toFixHeight);
       String s = "../FinishedMaps/" + year + ".jpg";
       save(s);
